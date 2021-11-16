@@ -29,6 +29,11 @@ p {
 	margin: 4px auto;
 }
 
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
 .contenedor {
 	background-color: lightblue;
 	position: relative;

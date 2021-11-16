@@ -1,19 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const toTop = document.querySelector('#toTop')
-	const para = Array.from(document.querySelectorAll('p'))
-	const cantidad = document.querySelector('#cantidad')
-	const img = document.querySelector('#img')
+	const paras = Array.from(document.querySelectorAll('p'))
+	const totalChars = document.querySelector('#cantidad')
+	const imgContainer = document.querySelector('#img')
+	const anchor = document.querySelector('.tres > a')
+	const clickedLink = document.querySelector('#link')
 
 	const newImage = document.createElement('IMG')
 
-	para.forEach(p => p.style.background = "lightblue")
+	paras.forEach(p => p.style.background = "lightblue")
 
-	const lens = para.reduce((acc, cur) => [...acc, cur.innerText.length], [])
-	const totalLen = lens.reduce((acc, cur) => acc += cur, 0)
-	cantidad.innerText = `En todos los parrafos hay ${totalLen} caracteres en total`
+	const totalLen = paras.reduce((acc, cur) => acc + cur.innerText.split(' ').length , 0)
+	totalChars.innerText = `Hay ${totalLen} palabras en total dentro de los parrafos`
+
+	anchor.addEventListener('click', e => {
+		e.preventDefault()
+		clickedLink.innerText = `Clickeaste en ${e.target.href}`
+	})
 
 	newImage.setAttribute('src', 'img/code.jpg')
-	img.appendChild(newImage)
+	imgContainer.appendChild(newImage)
 
 	window.addEventListener('scroll', controlScroll)
 
